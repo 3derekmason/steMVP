@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Card } from '@material-ui/core';
+import { Card, CardActionArea } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AppContext from './AppContext';
 
@@ -18,13 +18,15 @@ const ActCard = (props) => {
 
   return (
    <Card style={{height: '100%'}}>
+     <CardActionArea>
      <div className="mui--text-headline" style={{background: '#18ffff'}}>{category}</div>
      <div className="mui--text-title" style={{marginTop: '4px'}}>{title}</div>
      <div className="mui--text-body1" style={{maxHeight: '100px', overflow: 'scroll', marginTop: '4px', paddingLeft: '8px', paddingRight: '8px'}}>{desc}</div>
-     <span className="cardFooter" style={{marginTop: '8px', marginBottom: '4px', paddingLeft: '4px', paddingRight: '4px'}}>
+     <div className="cardFooter" style={{marginTop: '8px', marginBottom: '4px', paddingLeft: '4px', paddingRight: '4px'}}>
        <div className="mui--text-caption">{duration}</div>
        <div className="mui--text-caption">{groupsize || ''}</div>
-     </span>
+     </div>
+     </CardActionArea>
    </Card>
   );
 };

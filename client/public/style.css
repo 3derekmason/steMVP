@@ -23,6 +23,11 @@ body {
   margin: 20px;
   display: flex;
 }
+#actform .buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .cardFooter {
   display: flex;
