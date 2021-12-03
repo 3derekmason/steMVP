@@ -8,13 +8,25 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+
+// Get all activities
 app.get('/activities', (req, res) => {
-  const query = 'SELECT * FROM activities';
+  const query = "'SELECT * FROM activities'";
   db.query(query, (err, data) => {
     if (err) console.log(err);
     res.status(200).json(data.rows);
   })
 })
+// Get activities of a category
+app.get('/activities/category', (req, res) => {
+  const category = req.query.category;
+  const query = `SELECT * FROM activities WHERE category = '${category}'`;
+  db.query(query, (err, data) => {
+    if (err) console.log(err);
+    res.status(200).json(data.rows);
+  })
+})
+// Add a new activity
 app.post('/activities', (req, res) => {
   const query = 'INSERT INTO activities (title, description, length, group_size, category) VALUES ($1, $2, $3, $4, $5)';
   const title = req.body.title;
