@@ -21,6 +21,7 @@ body {
 
 #actform {
   margin: 20px;
+  display: flex;
 }
 
 .cardFooter {
