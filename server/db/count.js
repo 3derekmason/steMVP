@@ -1,11 +1,11 @@
 
 const Pool = require('pg').Pool
-const activities = new Pool({
+const count = new Pool({
   user: 'derekmason',
   host: 'localhost',
-  database: 'activities',
+  database: 'activity_count',
   password: 'password',
-  port: 3333,
+  port: 1234,
 })
 
-module.exports = activities;
+module.exports = count;
