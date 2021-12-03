@@ -30,7 +30,7 @@ const App = () => {
     <AppContext.Provider value={{activities}}>
     <div id="container">
       <Appbar>
-        <div className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
+        <div id="logo" className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
         <div className="mui--text-subhead"><FontAwesomeIcon icon={faMicroscope} style={{marginRight: "8px"}}/>About</div>
       </Appbar>
       <ActForm />

@@ -11,6 +11,9 @@ body {
   padding-left: 40px;
   padding-right: 40px;
 }
+#logo {
+  font-variant: small-caps;
+}
 
 #app {
   padding: 8px;
