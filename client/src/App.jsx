@@ -8,7 +8,7 @@ const App = () => {
   return (
       <Appbar>
         <div className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
-        <div className="mui--text-subhead">About</div>
+        <div className="mui--text-subhead"><FontAwesomeIcon icon={faMicroscope} style={{marginRight: "8px"}}/>About</div>
       </Appbar>
   );
 };
