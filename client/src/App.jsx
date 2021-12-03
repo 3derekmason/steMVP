@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
 
 import ActForm from './ActForm.jsx';
+import CardView from './CardView.jsx';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
         <div className="mui--text-subhead"><FontAwesomeIcon icon={faMicroscope} style={{marginRight: "8px"}}/>About</div>
       </Appbar>
       <ActForm />
+      <CardView />
     </div>
   );
 };

@@ -16,3 +16,8 @@ body {
   padding: 8px;
   background: #eee;
 }
+
+#cardview {
+  margin: 20px;
+  padding: 20px;
+}
