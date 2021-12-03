@@ -16,7 +16,6 @@ const App = () => {
     fetch('/activities')
     .then(res => res.json())
     .then((data) => {
-      console.log(data);
       setActivities(data);
     })
     .catch((err) => {
@@ -29,7 +28,7 @@ const App = () => {
   }
   return (
     <AppContext.Provider value={{activities}}>
-    <div>
+    <div id="container">
       <Appbar>
         <div className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
         <div className="mui--text-subhead"><FontAwesomeIcon icon={faMicroscope} style={{marginRight: "8px"}}/>About</div>

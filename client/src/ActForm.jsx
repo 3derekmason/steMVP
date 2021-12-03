@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ActForm = () => {
 
   return (
-    <Card>
+    <Card id="actform">
       <CardContent>
         <div className="mui--text-display4">Filter/Add Activity Form</div>
       </CardContent>

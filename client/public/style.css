@@ -15,3 +15,13 @@ body {
 #app {
   padding: 8px;
 }
+
+#actform {
+  margin: 20px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
