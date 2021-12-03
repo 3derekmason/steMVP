@@ -1,5 +1,6 @@
 body {
   font-family: Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .mui-appbar {
@@ -9,4 +10,9 @@ body {
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+#app {
+  padding: 8px;
+  background: #eee;
 }
