@@ -41,6 +41,8 @@ app.post('/activities', (req, res) => {
 })
 
 
+
+
 app.listen(7676, () => {
   console.log('Access granted to STEM Lab...');
 });

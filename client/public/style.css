@@ -1,0 +1,12 @@
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.mui-appbar {
+  background-color: #00bcd4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
