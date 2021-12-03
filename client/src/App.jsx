@@ -3,6 +3,8 @@ import Appbar from 'muicss/lib/react/appbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
 
+import AppContext from './AppContext.js';
+
 import ActForm from './ActForm.jsx';
 import CardView from './CardView.jsx';
 
@@ -22,7 +24,11 @@ const App = () => {
     })
   }, [activities]);
 
+  if (!activities) {
+    return <Appbar><div className="mui--text-caption">Loading the STEM LAB...</div></Appbar>;
+  }
   return (
+    <AppContext.Provider value={{activities}}>
     <div>
       <Appbar>
         <div className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
@@ -31,6 +37,7 @@ const App = () => {
       <ActForm />
       <CardView />
     </div>
+    </AppContext.Provider>
   );
 };
 

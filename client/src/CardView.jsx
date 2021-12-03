@@ -1,16 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card } from '@material-ui/core';
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import AppContext from './AppContext';
 
 const CardView = () => {
+  const context = useContext(AppContext);
+  const activities = context.activities;
+
   return (
-      <Container id="cardview">
-        <div className="mui--text-caption">Cards for each db Activity will be displayed here</div>
-        <Card>
-          <div className="mui--text-title">{activities}</div>
-        </Card>
-      </Container>
+    <Grid container spacing={2}>
+    <Grid item xs={12}>
+       <Grid container justifyContent="center" spacing={2}>
+         {activities.map((value) => (
+           <Grid key={value.activity_id} item xs={6}>
+             <Card>
+               <div className="mui--text-title">
+                {JSON.stringify(value)}
+               </div>
+               </Card>
+           </Grid>
+         ))}
+       </Grid>
+     </Grid>
+   </Grid>
   );
 };
 
