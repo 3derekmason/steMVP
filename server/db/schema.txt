@@ -20,3 +20,4 @@ CREATE TABLE activity_count (
   CONSTRAINT fk_activity FOREIGN KEY(recent) REFERENCES activities(activity_id)
 );
 
+
