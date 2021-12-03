@@ -8,6 +8,20 @@ import CardView from './CardView.jsx';
 
 const App = () => {
 
+  const [activities, setActivities] = useState();
+
+  useEffect(() => {
+    fetch('/activities')
+    .then(res => res.json())
+    .then((data) => {
+      console.log(data);
+      setActivities(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }, [activities]);
+
   return (
     <div>
       <Appbar>

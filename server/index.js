@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 // Get all activities
 app.get('/activities', (req, res) => {
-  const query = "'SELECT * FROM activities'";
+  const query = 'SELECT * FROM activities';
   db.query(query, (err, data) => {
     if (err) console.log(err);
     res.status(200).json(data.rows);
