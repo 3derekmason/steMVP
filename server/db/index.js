@@ -3,9 +3,9 @@ const Pool = require('pg').Pool
 const activities = new Pool({
   user: 'derekmason',
   host: 'localhost',
-  database: 'activities',
+  database: 'stemvp',
   password: 'password',
-  port: 3333,
+  port: 5432,
 })
 
 module.exports = activities;
