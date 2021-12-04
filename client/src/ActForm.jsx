@@ -10,7 +10,11 @@ import {
   NativeSelect,
 } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import {
+  faGripHorizontal,
+  faGripLines,
+  faGripVertical,
+} from "@fortawesome/free-solid-svg-icons";
 import ActivityModal from "./ActivityModal.jsx";
 import AddActForm from "./AddActForm.jsx";
 import AppContext from "./AppContext.js";
@@ -19,9 +23,11 @@ const ActForm = () => {
   const context = useContext(AppContext);
   const activities = context.activities;
   const activityModal = useRef(null);
-
+  const scale = context.scale;
+  const setScale = context.setScale;
   const [currentCategory, setCurrentCategory] = useState();
   const [currentCount, setCurrentCount] = useState();
+
   const handleChange = (e) => {
     const filterString = e.target.value.toLowerCase();
     fetch(`http://localhost:7676/activities/category?category=${filterString}`)
@@ -33,6 +39,7 @@ const ActForm = () => {
         console.log(err);
       });
   };
+
   const closeForm = () => {
     activityModal.current.close();
   };
@@ -54,8 +61,40 @@ const ActForm = () => {
 
   return (
     <>
-      <Card id="actform">
+      <Card id="actform" style={{ padding: "16px" }}>
         <div className="filter" style={{ width: "66%" }}>
+          <div className="view">
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.preventDefault();
+                setScale(12);
+              }}
+            >
+              <FontAwesomeIcon icon={faGripLines} />
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.preventDefault();
+                setScale(6);
+              }}
+            >
+              <FontAwesomeIcon icon={faGripVertical} />
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.preventDefault();
+                setScale(4);
+              }}
+            >
+              <FontAwesomeIcon icon={faGripHorizontal} />
+            </Button>
+          </div>
           <FormControl>
             <InputLabel htmlFor="category-native-helper">Category</InputLabel>
             <NativeSelect

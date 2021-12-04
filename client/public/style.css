@@ -16,10 +16,6 @@ body {
   font-variant: small-caps;
 }
 
-#app {
-  padding: 8px;
-}
-
 #actform {
   margin: 20px;
   display: flex;

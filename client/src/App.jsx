@@ -12,10 +12,14 @@ import CardView from "./CardView.jsx";
 
 const App = () => {
   const [activities, setActivities] = useState();
+  const [scale, setScale] = useState();
 
   const test = "test";
 
   useEffect(() => {
+    if (!scale) {
+      setScale(12);
+    }
     fetch("/activities")
       .then((res) => res.json())
       .then((data) => {
@@ -38,6 +42,8 @@ const App = () => {
       value={{
         activities,
         setActivities,
+        scale,
+        setScale,
         test,
       }}
     >
