@@ -67,7 +67,6 @@ const AddActForm = (props) => {
       [name]: value,
     });
   };
-  console.log(props);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newActivityData = {
