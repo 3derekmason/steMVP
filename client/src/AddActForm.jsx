@@ -111,7 +111,7 @@ const AddActForm = (props) => {
         <div id="formTitle">
           <TextField
             id="title-input"
-            key="title"
+            key={Math.random()}
             name="title"
             label="Activity Title"
             type="text"
@@ -130,7 +130,7 @@ const AddActForm = (props) => {
           <div id="attributes">
             <TextField
               id="groupsize-input"
-              key="groupSize"
+              key={Math.random}
               name="groupSize"
               label="Group Size"
               placeholder="Ex: 3-4"
@@ -140,7 +140,7 @@ const AddActForm = (props) => {
             />
             <TextField
               id="duration-input"
-              key="duration"
+              key={Math.random()}
               name="duration"
               label="Duration"
               placeholder="Ex: 5-10 minutes"
@@ -151,7 +151,7 @@ const AddActForm = (props) => {
             />
             <TextField
               id="title-input"
-              key="description"
+              key={Math.random()}
               name="description"
               label="Description"
               type="text"
@@ -170,6 +170,7 @@ const AddActForm = (props) => {
               <FormLabel>Category</FormLabel>
               <RadioGroup
                 name="category"
+                key={Math.random()}
                 required
                 value={formValues.category}
                 onChange={handleInputChange}
@@ -177,7 +178,7 @@ const AddActForm = (props) => {
                 {categoryData.map((chunk) => (
                   <div style={{ color: chunk[1] }}>
                     <FormControlLabel
-                      key={chunk[1]}
+                      key={Math.random()}
                       value={chunk[2]}
                       control={<Radio size="small" />}
                       label={chunk[2]}

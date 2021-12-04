@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   Button,
   Card,
@@ -13,17 +13,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
 import ActivityModal from "./ActivityModal.jsx";
 import AddActForm from "./AddActForm.jsx";
+import AppContext from "./AppContext.js";
 
 const ActForm = () => {
+  const context = useContext(AppContext);
+  const activities = context.activities;
   const activityModal = useRef(null);
 
   const [currentCategory, setCurrentCategory] = useState();
-  const handleChange = (event) => {
-    console.log(event.target.value);
+  const [currentCount, setCurrentCount] = useState();
+  const handleChange = (e) => {
+    const filterString = e.target.value.toLowerCase();
+    fetch(`http://localhost:7676/activities/category?category=${filterString}`)
+      .then((res) => res.json())
+      .then((data) => {
+        context.setActivities(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const closeForm = () => {
     activityModal.current.close();
   };
+
+  const getCount = () => {
+    fetch(`http://localhost:7676/activities`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrentCount(data.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
   return (
     <>
       <Card id="actform">
@@ -65,7 +93,23 @@ const ActForm = () => {
           >
             Add Activity
           </Button>
-          <Button style={{ color: "#00838f" }}>RANDOM ACTIVITY</Button>
+          <Button
+            style={{ color: "#00838f" }}
+            onClick={(e) => {
+              e.preventDefault();
+              const saveCount = currentCount;
+              fetch("http://localhost:7676/activities")
+                .then((res) => res.json())
+                .then((data) => {
+                  const randomAct = [];
+                  const randomIndex = Math.floor(Math.random() * data.length);
+                  randomAct.push(data[randomIndex]);
+                  context.setActivities(randomAct);
+                });
+            }}
+          >
+            RANDOM ACTIVITY
+          </Button>
         </div>
       </Card>
       <ActivityModal ref={activityModal}>
