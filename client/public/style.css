@@ -1,6 +1,7 @@
 body {
   font-family: Roboto, sans-serif;
   box-sizing: border-box;
+  background: #e0f7fa;
 }
 
 .mui-appbar {
@@ -30,6 +31,7 @@ body {
 }
 
 .cardBanner {
+  min-height: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;

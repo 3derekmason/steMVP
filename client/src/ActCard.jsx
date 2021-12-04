@@ -16,7 +16,7 @@ import {
 const categoryData = {
   art: [faPaintBrush, "#C2185B", "#FCE4EC"],
   bugs: [faBug, "#AFB42B", "#F9FBE7"],
-  dinosaurs: [faDna, "#00796B", "#EOF2F1"],
+  dinosaurs: [faDna, "#00796B", "#E0F2F1"],
   music: [faMusic, "#E64A19", "#FBE9E7"],
   nature: [faLeaf, "#388E3C", "#E8F5E9"],
   ocean: [faFish, "#303F9F", "#E8EAF6"],
@@ -34,42 +34,51 @@ const ActCard = (props) => {
   }
   const category = props.category.toUpperCase();
   const icon = categoryData[props.category][0];
+  const banner = categoryData[props.category][1];
+  const tile = categoryData[props.category][2];
 
   return (
-    <Card style={{ height: "100%" }}>
+    <Card>
       <CardActionArea>
-        <div className="cardBanner">
-          <div className="mui--text-headline" style={{ background: "#18ffff" }}>
+        <div className="cardBanner" style={{ background: banner }}>
+          <span style={{ marginLeft: "12px", color: tile }}>
             <FontAwesomeIcon icon={icon} />
+          </span>
+          <div
+            className="mui--text-subhead"
+            style={{ marginRight: "20px", color: tile }}
+          >
             {category}
           </div>
         </div>
-        <div className="mui--text-title" style={{ marginTop: "4px" }}>
-          {title}
-        </div>
-        <div
-          className="mui--text-body1"
-          style={{
-            maxHeight: "100px",
-            overflow: "scroll",
-            marginTop: "4px",
-            paddingLeft: "8px",
-            paddingRight: "8px",
-          }}
-        >
-          {desc}
-        </div>
-        <div
-          className="cardFooter"
-          style={{
-            marginTop: "8px",
-            marginBottom: "4px",
-            paddingLeft: "4px",
-            paddingRight: "4px",
-          }}
-        >
-          <div className="mui--text-caption">{duration}</div>
-          <div className="mui--text-caption">{groupsize || ""}</div>
+        <div className="tileBody">
+          <div className="mui--text-title" style={{ marginTop: "4px" }}>
+            {title}
+          </div>
+          <div
+            className="mui--text-body1"
+            style={{
+              maxHeight: "100px",
+              overflow: "scroll",
+              marginTop: "4px",
+              paddingLeft: "8px",
+              paddingRight: "8px",
+            }}
+          >
+            {desc}
+          </div>
+          <div
+            className="cardFooter"
+            style={{
+              marginTop: "8px",
+              marginBottom: "4px",
+              paddingLeft: "4px",
+              paddingRight: "4px",
+            }}
+          >
+            <div className="mui--text-caption">{duration}</div>
+            <div className="mui--text-caption">{groupsize || ""}</div>
+          </div>
         </div>
       </CardActionArea>
     </Card>
