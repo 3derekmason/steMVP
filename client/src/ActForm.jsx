@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button, Card, CardContent, FormControl, FormHelperText, InputLabel, Select, NativeSelect } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import ActivityModal from './ActivityModal.jsx';
+import AddActForm from './AddActForm.jsx';
 
 
 const ActForm = () => {
+
+  const activityModal = useRef(null);
 
   const [currentCategory, setCurrentCategory] = useState();
 
@@ -14,6 +18,7 @@ const ActForm = () => {
 
 
   return (
+    <>
     <Card id="actform">
       <div className="filter" style={{width: '66%'}}>
       <FormControl >
@@ -40,10 +45,16 @@ const ActForm = () => {
       </FormControl>
       </div>
       <div className="buttons" style={{width: '33%'}}>
-        <Button variant="contianed" color="primary">Add Activity</Button>
+        <Button variant="contianed" color="primary" style={{background: '#18ffff', color: '#ffffff'}} onClick={() => {
+          activityModal.current.open()
+        }}>Add Activity</Button>
         <Button color="secondary">RANDOM ACTIVITY</Button>
       </div>
     </Card>
+    <ActivityModal ref={activityModal}>
+      <AddActForm />
+    </ActivityModal>
+    </>
   );
 };
 

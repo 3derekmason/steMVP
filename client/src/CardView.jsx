@@ -16,7 +16,7 @@ const CardView = () => {
         <Grid item xs={12}>
           <Grid container justifyContent="space-around" spacing={3}>
             {activities.map((activity) => (
-              <Grid key={activity.activity_id} item xs={4}>
+              <Grid key={activity.activity_id} item xs={12}>
                 <ActCard title={activity.title} desc={activity.description} duration={activity.length} groupsize={activity.group_size} category={activity.category} />
               </Grid>
             ))}

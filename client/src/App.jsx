@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Appbar from 'muicss/lib/react/appbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
 
 import AppContext from './AppContext.js';
+import ActivityModal from './ActivityModal.jsx'
 
 import ActForm from './ActForm.jsx';
 import CardView from './CardView.jsx';
