@@ -14,10 +14,30 @@ import {
   faGripHorizontal,
   faGripLines,
   faGripVertical,
+  faBug,
+  faDna,
+  faFish,
+  faFilter,
+  faLeaf,
+  faMusic,
+  faPaintBrush,
+  faSignLanguage,
+  faUserAstronaut,
 } from "@fortawesome/free-solid-svg-icons";
 import ActivityModal from "./ActivityModal.jsx";
 import AddActForm from "./AddActForm.jsx";
 import AppContext from "./AppContext.js";
+
+const categoryData = [
+  ["art", faPaintBrush, "#C2185B", "#FCE4EC"],
+  ["bugs", faBug, "#AFB42B", "#F9FBE7"],
+  ["dinosaurs", faDna, "#00796B", "#E0F2F1"],
+  ["music", faMusic, "#E64A19", "#FBE9E7"],
+  ["nature", faLeaf, "#388E3C", "#E8F5E9"],
+  ["ocean", faFish, "#303F9F", "#E8EAF6"],
+  ["sensory", faSignLanguage, "#7B1FA2", "#F3E5F5"],
+  ["space", faUserAstronaut, "#512DA8", "#EDE7F6"],
+];
 
 const ActForm = () => {
   const context = useContext(AppContext);
@@ -28,8 +48,8 @@ const ActForm = () => {
   const [currentCategory, setCurrentCategory] = useState();
   const [currentCount, setCurrentCount] = useState();
 
-  const handleChange = (e) => {
-    const filterString = e.target.value.toLowerCase();
+  const handleChange = (category) => {
+    const filterString = category[0];
     fetch(`http://localhost:7676/activities/category?category=${filterString}`)
       .then((res) => res.json())
       .then((data) => {
@@ -95,28 +115,41 @@ const ActForm = () => {
               <FontAwesomeIcon icon={faGripHorizontal} />
             </Button>
           </div>
-          <FormControl>
-            <InputLabel htmlFor="category-native-helper">Category</InputLabel>
-            <NativeSelect
-              value={""}
-              onChange={handleChange}
-              inputProps={{
-                name: "category",
-                id: "category-native-helper",
+          <div className="iconBar">
+            <span
+              className="chooseAllIcon"
+              style={{ marginRight: "8px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                fetch("http://localhost:7676/activities")
+                  .then((res) => res.json())
+                  .then((data) => {
+                    context.setActivities(data);
+                  });
               }}
             >
-              <option aria-label="None" value="" />
-              <option>Art</option>
-              <option>Bugs</option>
-              <option>Dinosaurs</option>
-              <option>Music</option>
-              <option>Nature</option>
-              <option>Ocean</option>
-              <option>Sensory</option>
-              <option>Space</option>
-            </NativeSelect>
-            <FormHelperText>Filter by category</FormHelperText>
-          </FormControl>
+              <FontAwesomeIcon
+                key={Math.random()}
+                icon={faFilter}
+                size={"2x"}
+              />
+            </span>
+            {categoryData.map((category) => (
+              <span
+                className="chooseCategoryIcon"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleChange(category);
+                }}
+              >
+                <FontAwesomeIcon
+                  key={Math.random()}
+                  icon={category[1]}
+                  size={"3x"}
+                />
+              </span>
+            ))}
+          </div>
         </div>
         <div className="buttons" style={{ width: "33%" }}>
           <Button

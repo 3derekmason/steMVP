@@ -38,7 +38,7 @@ const ActCard = (props) => {
   const tile = categoryData[props.category][2];
 
   return (
-    <Card>
+    <Card style={{ width: "100%", height: "100%" }}>
       <CardActionArea>
         <div className="cardBanner" style={{ background: banner }}>
           <span style={{ marginLeft: "12px", color: tile }}>
@@ -61,7 +61,7 @@ const ActCard = (props) => {
           <div
             className="mui--text-body1"
             style={{
-              maxHeight: "100px",
+              minHeight: "80px",
               overflow: "scroll",
               marginTop: "4px",
               paddingLeft: "8px",

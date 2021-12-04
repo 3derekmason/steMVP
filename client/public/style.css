@@ -20,6 +20,41 @@ body {
   margin: 20px;
   display: flex;
 }
+#actform .filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.iconBar {
+  width: 66%;
+  margin-right: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chooseCategoryIcon {
+  transition: 0.5s;
+  color: #00bcd4;
+}
+.chooseCategoryIcon:hover {
+  transition: 0.5s;
+  cursor: pointer;
+  color: #00838f;
+}
+.chooseAllIcon {
+  transition: 0.5s;
+  color: #00acc1;
+}
+.chooseAllIcon:hover {
+  transition: 0.5s;
+  cursor: pointer;
+  color: #37474f;
+}
+
+.view {
+  width: 33%;
+}
 #actform .buttons {
   width: 100%;
   display: flex;
