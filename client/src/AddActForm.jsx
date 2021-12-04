@@ -1,9 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AppBar, Button, Card, CardContent, FormControl, FormControlLabel, FormLabel, FormHelperText, InputLabel, Select, MenuItem, NativeSelect, Radio, RadioGroup, TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+
+import AppContext from './AppContext.js';
+import ActivityModal from './ActivityModal.jsx';
 
 
 const AddActForm = () => {
+
+  const context = useContext(AppContext);
+  const activities = context.activities;
+  const handleActivityChange = context.handleActivityChange;
+
+  const activityModal = useRef(null);
 
   const defaultValues = {
     title: "",
@@ -24,10 +34,37 @@ const AddActForm = () => {
       [name]: value,
     });
   };
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    const newActivityData = {
+      title: formValues.title,
+      description: formValues.description,
+      duration: formValues.duration,
+      group_size: formValues.groupSize,
+      category: formValues.category
+    }
+    fetch('http://localhost:7676/activities', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newActivityData),
+    })
+    .then(response => response.json())
+    .then(data => {
+
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
 
   return (
     <Card style={{padding: '16px'}}>
-      <form>
+      <form onSubmit={handleSubmit}>
+        <div id="formTitle">
           <TextField
               id="title-input"
               name="title"
@@ -36,6 +73,8 @@ const AddActForm = () => {
               value={formValues.title}
               onChange={handleInputChange}
             />
+            <FontAwesomeIcon icon={faPen} size="4x" style={{color: '#00bcd4'}} spin/>
+        </div>
         <div id="categoryFormTop">
 
           <div id="attributes">
@@ -64,8 +103,8 @@ const AddActForm = () => {
               type="text"
               value={formValues.description}
               multiline
-              rows={8}
-              rowsMax={10}
+              minRows={8}
+              maxRows={10}
               fullWidth
               onChange={handleInputChange}
             />
@@ -93,7 +132,11 @@ const AddActForm = () => {
           </div>
 
         </div>
-
+        <Button variant="contained"
+                style={{background: '#00838f', color: '#ffffff'}}
+                fullWidth
+                type="submit">
+                Add Activity</Button>
       </form>
     </Card>
   );

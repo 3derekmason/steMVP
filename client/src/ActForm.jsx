@@ -45,10 +45,10 @@ const ActForm = () => {
       </FormControl>
       </div>
       <div className="buttons" style={{width: '33%'}}>
-        <Button variant="contianed" color="primary" style={{background: '#18ffff', color: '#ffffff'}} onClick={() => {
+        <Button variant="contained" style={{background: '#00838f', color: '#ffffff', marginTop: '20px'}} onClick={() => {
           activityModal.current.open()
         }}>Add Activity</Button>
-        <Button color="secondary">RANDOM ACTIVITY</Button>
+        <Button style={{color: '#00838f'}}>RANDOM ACTIVITY</Button>
       </div>
     </Card>
     <ActivityModal ref={activityModal}>

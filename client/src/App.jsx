@@ -13,6 +13,10 @@ const App = () => {
 
   const [activities, setActivities] = useState();
 
+  const handleActivityChange = (newActivities) {
+    setActivities(newActivities);
+  }
+
   useEffect(() => {
     fetch('/activities')
     .then(res => res.json())
@@ -28,7 +32,7 @@ const App = () => {
     return <Appbar><div className="mui--text-caption">Loading the STEM LAB...</div></Appbar>;
   }
   return (
-    <AppContext.Provider value={{activities}}>
+    <AppContext.Provider value={{activities, handleActivityChange}}>
     <div id="container">
       <Appbar>
         <div id="logo" className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
