@@ -68,6 +68,7 @@ const AddActForm = () => {
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newActivityData = {
@@ -77,6 +78,8 @@ const AddActForm = () => {
       group_size: formValues.groupSize,
       category: formValues.category,
     };
+    setFormValues(defaultValues);
+    activityModal.current.close;
     fetch("http://localhost:7676/activities", {
       method: "POST",
       headers: {
@@ -110,9 +113,11 @@ const AddActForm = () => {
         <div id="formTitle">
           <TextField
             id="title-input"
+            key="title"
             name="title"
             label="Activity Title"
             type="text"
+            required
             value={formValues.title}
             onChange={handleInputChange}
           />
@@ -127,6 +132,7 @@ const AddActForm = () => {
           <div id="attributes">
             <TextField
               id="groupsize-input"
+              key="groupSize"
               name="groupSize"
               label="Group Size"
               placeholder="Ex: 3-4"
@@ -136,18 +142,22 @@ const AddActForm = () => {
             />
             <TextField
               id="duration-input"
+              key="duration"
               name="duration"
               label="Duration"
               placeholder="Ex: 5-10 minutes"
               type="text"
+              required
               value={formValues.duration}
               onChange={handleInputChange}
             />
             <TextField
               id="title-input"
+              key="description"
               name="description"
               label="Description"
               type="text"
+              required
               value={formValues.description}
               multiline
               minRows={8}
@@ -162,13 +172,14 @@ const AddActForm = () => {
               <FormLabel>Category</FormLabel>
               <RadioGroup
                 name="category"
+                required
                 value={formValues.category}
                 onChange={handleInputChange}
               >
                 {categoryData.map((chunk) => (
                   <div style={{ color: chunk[1] }}>
                     <FormControlLabel
-                      key={chunk[2]}
+                      key={chunk[1]}
                       value={chunk[2]}
                       control={<Radio size="small" />}
                       label={chunk[2]}
