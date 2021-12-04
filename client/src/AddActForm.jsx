@@ -1,14 +1,28 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import { AppBar, Button, Card, CardContent, FormControl, FormControlLabel, FormLabel, FormHelperText, InputLabel, Select, MenuItem, NativeSelect, Radio, RadioGroup, TextField } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import React, { useState, useEffect, useContext, useRef } from "react";
+import {
+  AppBar,
+  Button,
+  Card,
+  CardContent,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  FormHelperText,
+  InputLabel,
+  Select,
+  MenuItem,
+  NativeSelect,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-import AppContext from './AppContext.js';
-import ActivityModal from './ActivityModal.jsx';
-
+import AppContext from "./AppContext.js";
+import ActivityModal from "./ActivityModal.jsx";
 
 const AddActForm = () => {
-
   const context = useContext(AppContext);
   const activities = context.activities;
   const handleActivityChange = context.handleActivityChange;
@@ -20,12 +34,21 @@ const AddActForm = () => {
     description: "",
     duration: "",
     groupSize: "",
-    category: ""
+    category: "",
   };
 
   const [formValues, setFormValues] = useState(defaultValues);
 
-  const catChoices = ['art', 'bugs', 'dinosaurs', 'music', 'nature', 'ocean', 'sensory', 'space'];
+  const catChoices = [
+    "art",
+    "bugs",
+    "dinosaurs",
+    "music",
+    "nature",
+    "ocean",
+    "sensory",
+    "space",
+  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,48 +58,50 @@ const AddActForm = () => {
     });
   };
   const handleSubmit = (e) => {
-
     e.preventDefault();
     const newActivityData = {
       title: formValues.title,
       description: formValues.description,
       duration: formValues.duration,
       group_size: formValues.groupSize,
-      category: formValues.category
-    }
-    fetch('http://localhost:7676/activities', {
-      method: 'POST',
+      category: formValues.category,
+    };
+    fetch("http://localhost:7676/activities", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newActivityData),
     })
-    .then(response => response.json())
-    .then(data => {
-
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
-    <Card style={{padding: '16px'}}>
+    <Card style={{ padding: "16px" }}>
       <form onSubmit={handleSubmit}>
         <div id="formTitle">
           <TextField
-              id="title-input"
-              name="title"
-              label="Activity Title"
-              type="text"
-              value={formValues.title}
-              onChange={handleInputChange}
-            />
-            <FontAwesomeIcon icon={faPen} size="4x" style={{color: '#00bcd4'}} spin/>
+            id="title-input"
+            name="title"
+            label="Activity Title"
+            type="text"
+            value={formValues.title}
+            onChange={handleInputChange}
+          />
+          <FontAwesomeIcon
+            icon={faPen}
+            size="4x"
+            style={{ color: "#00bcd4" }}
+            spin
+          />
         </div>
         <div id="categoryFormTop">
-
           <div id="attributes">
             <TextField
               id="groupsize-input"
@@ -96,7 +121,7 @@ const AddActForm = () => {
               value={formValues.duration}
               onChange={handleInputChange}
             />
-             <TextField
+            <TextField
               id="title-input"
               name="description"
               label="Description"
@@ -111,7 +136,6 @@ const AddActForm = () => {
           </div>
 
           <div id="categoryList">
-
             <FormControl>
               <FormLabel>Category</FormLabel>
               <RadioGroup
@@ -119,24 +143,26 @@ const AddActForm = () => {
                 value={formValues.category}
                 onChange={handleInputChange}
               >
-              {catChoices.map((category) => <FormControlLabel
-                  key={category}
-                  value={category}
-                  control={<Radio size="small" />}
-                  label={category}
-                />
-              )}
+                {catChoices.map((category) => (
+                  <FormControlLabel
+                    key={category}
+                    value={category}
+                    control={<Radio size="small" />}
+                    label={category}
+                  />
+                ))}
               </RadioGroup>
             </FormControl>
-
           </div>
-
         </div>
-        <Button variant="contained"
-                style={{background: '#00838f', color: '#ffffff'}}
-                fullWidth
-                type="submit">
-                Add Activity</Button>
+        <Button
+          variant="contained"
+          style={{ background: "#00838f", color: "#ffffff" }}
+          fullWidth
+          type="submit"
+        >
+          Add Activity
+        </Button>
       </form>
     </Card>
   );
