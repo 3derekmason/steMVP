@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Appbar from 'muicss/lib/react/appbar';
+import { Container } from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicroscope, faSeedling } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,13 +34,15 @@ const App = () => {
   }
   return (
     <AppContext.Provider value={{activities, handleActivityChange}}>
-    <div id="container">
+    <div id="container" maxWidth="lg">
       <Appbar>
         <div id="logo" className="mui--text-display2">steMVP <FontAwesomeIcon icon={faSeedling} /></div>
         <div className="mui--text-subhead"><FontAwesomeIcon icon={faMicroscope} style={{marginRight: "8px"}}/>About</div>
       </Appbar>
-      <ActForm />
-      <CardView />
+      <Container>
+        <ActForm />
+        <CardView />
+      </Container>
     </div>
     </AppContext.Provider>
   );

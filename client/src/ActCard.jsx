@@ -51,8 +51,11 @@ const ActCard = (props) => {
             {category}
           </div>
         </div>
-        <div className="tileBody">
-          <div className="mui--text-title" style={{ marginTop: "4px" }}>
+        <div className="tileBody" style={{ padding: "12px", background: tile }}>
+          <div
+            className="mui--text-headline"
+            style={{ marginTop: "4px", fontVariant: "small-caps" }}
+          >
             {title}
           </div>
           <div
@@ -63,6 +66,7 @@ const ActCard = (props) => {
               marginTop: "4px",
               paddingLeft: "8px",
               paddingRight: "8px",
+              fontVariant: "small-caps",
             }}
           >
             {desc}
