@@ -18,11 +18,12 @@ const ActForm = () => {
   const activityModal = useRef(null);
 
   const [currentCategory, setCurrentCategory] = useState();
-
   const handleChange = (event) => {
     console.log(event.target.value);
   };
-
+  const closeForm = () => {
+    activityModal.current.close();
+  };
   return (
     <>
       <Card id="actform">
@@ -68,7 +69,7 @@ const ActForm = () => {
         </div>
       </Card>
       <ActivityModal ref={activityModal}>
-        <AddActForm />
+        <AddActForm pass={activityModal} close={closeForm} />
       </ActivityModal>
     </>
   );

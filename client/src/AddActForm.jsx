@@ -33,13 +33,12 @@ import {
 import AppContext from "./AppContext.js";
 import ActivityModal from "./ActivityModal.jsx";
 
-const AddActForm = () => {
+const AddActForm = (props) => {
   const context = useContext(AppContext);
   const activities = context.activities;
   const handleActivityChange = context.handleActivityChange;
 
   const activityModal = useRef(null);
-
   const defaultValues = {
     title: "",
     description: "",
@@ -68,7 +67,7 @@ const AddActForm = () => {
       [name]: value,
     });
   };
-
+  console.log(props);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newActivityData = {
@@ -79,7 +78,7 @@ const AddActForm = () => {
       category: formValues.category,
     };
     setFormValues(defaultValues);
-    activityModal.current.close;
+    props.close();
     fetch("http://localhost:7676/activities", {
       method: "POST",
       headers: {
