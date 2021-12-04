@@ -17,7 +17,18 @@ import {
   TextField,
 } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBug,
+  faDna,
+  faFish,
+  faLeaf,
+  faMusic,
+  faPaintBrush,
+  faPen,
+  faSeedling,
+  faSignLanguage,
+  faUserAstronaut,
+} from "@fortawesome/free-solid-svg-icons";
 
 import AppContext from "./AppContext.js";
 import ActivityModal from "./ActivityModal.jsx";
@@ -39,15 +50,15 @@ const AddActForm = () => {
 
   const [formValues, setFormValues] = useState(defaultValues);
 
-  const catChoices = [
-    "art",
-    "bugs",
-    "dinosaurs",
-    "music",
-    "nature",
-    "ocean",
-    "sensory",
-    "space",
+  const categoryData = [
+    [faPaintBrush, "#C2185B", "art"],
+    [faBug, "#AFB42B", "bugs"],
+    [faDna, "#00796B", "dinosaurs"],
+    [faMusic, "#E64A19", "music"],
+    [faLeaf, "#388E3C", "nature"],
+    [faFish, "#303F9F", "ocean"],
+    [faSignLanguage, "#7B1FA2", "sensory"],
+    [faUserAstronaut, "#512DA8", "space"],
   ];
 
   const handleInputChange = (e) => {
@@ -83,7 +94,18 @@ const AddActForm = () => {
   };
 
   return (
-    <Card style={{ padding: "16px" }}>
+    <Card style={{ padding: "16px", background: "#ECEFF1" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          color: "#00838F",
+          marginBottom: "#20px",
+        }}
+      >
+        <FontAwesomeIcon icon={faSeedling} size="3x" />
+        <div className="mui--text-headline">Add a new activity!</div>
+      </div>
       <form onSubmit={handleSubmit}>
         <div id="formTitle">
           <TextField
@@ -143,13 +165,16 @@ const AddActForm = () => {
                 value={formValues.category}
                 onChange={handleInputChange}
               >
-                {catChoices.map((category) => (
-                  <FormControlLabel
-                    key={category}
-                    value={category}
-                    control={<Radio size="small" />}
-                    label={category}
-                  />
+                {categoryData.map((chunk) => (
+                  <div style={{ color: chunk[1] }}>
+                    <FormControlLabel
+                      key={chunk[2]}
+                      value={chunk[2]}
+                      control={<Radio size="small" />}
+                      label={chunk[2]}
+                    />
+                    <FontAwesomeIcon icon={chunk[0]} />
+                  </div>
                 ))}
               </RadioGroup>
             </FormControl>
