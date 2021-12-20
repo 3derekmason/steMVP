@@ -1,7 +1,5 @@
 <img src="./client/public/assets/header.png">
 
-# steMPV
-
 ---
 
 ## **Description**
