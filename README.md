@@ -1,4 +1,4 @@
-<img src="client/public/assets/header.png">
+<img src="./client/public/assets/header.png">
 
 # steMPV
 
@@ -26,19 +26,19 @@ A group of activities pre-loaded into a postgreSQL database. The user is be able
 
 - Toolbar with buttons to select _view width_, _activity category_, _add activity_, or grab a _random activity_ if you can't decide.
 
-<img src="client/public/assets/toolbar.png">
+<img src="./client/public/assets/toolbar.png">
 
 - Default 3 in a row view
 
-<img  src="client/public/assets/three.png">
+<img  src="./client/public/assets/three.png">
 
 - 2 in a row
 
-<img src="client/public/assets/two.png">
+<img src="./client/public/assets/two.png">
 
 - And a single random acivity
 
-<img src="client/public/assets/random.png">
+<img src="./client/public/assets/random.png">
 
 ---
 
