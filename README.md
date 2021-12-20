@@ -40,6 +40,10 @@ A group of activities pre-loaded into a postgreSQL database. The user is be able
 
 <img src="./client/public/assets/random.png">
 
+- Post activity form
+
+<img src="./client/public/assets/post.png">
+
 ---
 
 ### Tech Used
