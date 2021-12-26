@@ -4,7 +4,6 @@ const path = require("path");
 const { pool } = require("./db/config");
 
 const app = express();
-const port = process.env.PORT;
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../client/public")));
@@ -49,6 +48,6 @@ app.route("/activities").get(getActivites).post(postActivity);
 
 app.route("/activities/category").get(getActivityCategory);
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("Access granted to STEM Lab...");
 });
