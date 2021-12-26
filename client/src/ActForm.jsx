@@ -121,7 +121,7 @@ const ActForm = () => {
               style={{ marginRight: "8px" }}
               onClick={(e) => {
                 e.preventDefault();
-                fetch("http://localhost:7676/activities")
+                fetch("/activities")
                   .then((res) => res.json())
                   .then((data) => {
                     context.setActivities(data);
@@ -170,7 +170,7 @@ const ActForm = () => {
             onClick={(e) => {
               e.preventDefault();
               const saveCount = currentCount;
-              fetch("http://localhost:7676/activities")
+              fetch("/activities")
                 .then((res) => res.json())
                 .then((data) => {
                   const randomAct = [];
