@@ -1,9 +1,9 @@
 
-DROP DATABASE IF EXISTS stemvp;
+-- -- DROP DATABASE IF EXISTS stemvp;
 
-CREATE DATABASE stemvp;
+-- CREATE DATABASE stemvp;
 
-\c stemvp;
+-- \c stemvp;
 
 CREATE TABLE activities (
   activity_id BIGSERIAL,
