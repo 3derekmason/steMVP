@@ -50,7 +50,7 @@ const ActForm = () => {
 
   const handleChange = (category) => {
     const filterString = category[0];
-    fetch(`http://localhost:7676/activities/category=${filterString}`)
+    fetch(`/activities/category=${filterString}`)
       .then((res) => res.json())
       .then((data) => {
         context.setActivities(data);
@@ -65,7 +65,7 @@ const ActForm = () => {
   };
 
   const getCount = () => {
-    fetch(`http://localhost:7676/activities`)
+    fetch(`/activities`)
       .then((res) => res.json())
       .then((data) => {
         setCurrentCount(data.length);
