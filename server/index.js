@@ -49,6 +49,6 @@ app.route("/activities").get(getActivites).post(postActivity);
 
 app.route("/activities/category").get(getActivityCategory);
 
-app.listen(process.env.PORT || 7676, () => {
+app.listen(process.env.PORT, () => {
   console.log("Access granted to STEM Lab...");
 });
