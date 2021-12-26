@@ -51,7 +51,7 @@ const ActForm = () => {
   const handleChange = (category) => {
     const filterString = category[0];
     fetch(
-      `/activities/category/` + new URLSearchParams({ category: filterString })
+      "/activities/category" + new URLSearchParams({ category: filterString })
     )
       .then((res) => res.json())
       .then((data) => {
