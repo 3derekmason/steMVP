@@ -36,7 +36,7 @@ const postActivity = (req, res) => {
 };
 // Get activities of a category
 const getActivityCategory = (req, res) => {
-  const category = req.query.category;
+  const category = req.params.category;
   const query = `SELECT * FROM activities WHERE category = '${category}'`;
   pool.query(query, (err, data) => {
     if (err) console.log(err);
