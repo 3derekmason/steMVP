@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require("http");
 const path = require("path");
 const { pool } = require("./db/config");
 
@@ -47,6 +48,7 @@ app.route("/activities").get(getActivites).post(postActivity);
 
 app.route("/activities/category").get(getActivityCategory);
 
-app.listen(process.env.PORT || 7676, () => {
+const server = http.createServer(app);
+server.listen(process.env.PORT || 7676, () => {
   console.log("Access granted to STEM Lab...");
 });
