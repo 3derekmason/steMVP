@@ -10,8 +10,8 @@ app.use(express.static(path.join(__dirname, "../client/public")));
 
 // Get all activities
 const getActivites = (req, res) => {
-  if (req.query.category) {
-    const category = req.query.category;
+  if (req.params.category) {
+    const category = req.params.category;
     const query = `SELECT * FROM activities WHERE category = '${category}'`;
     pool.query(query, (err, data) => {
       if (err) console.log(err);
