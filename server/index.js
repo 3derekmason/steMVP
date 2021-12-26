@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const path = require("path");
 const compression = require("compression");
 const helmet = require("helmet");
@@ -11,6 +12,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(compression());
+const isProduction = process.env.NODE_ENV === "production";
+const origin = {
+  origin: isProduction ? "https://www.example.com" : "*",
+};
+app.use(cors(origin));
 app.use(express.static(path.join(__dirname, "../client/public")));
 
 // Get all activities
