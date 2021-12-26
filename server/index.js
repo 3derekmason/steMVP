@@ -44,9 +44,11 @@ const getActivityCategory = (req, res) => {
   });
 };
 
-app.route("/activities").get(getActivites).post(postActivity);
-
-app.route("/activities/category").get(getActivityCategory);
+app
+  .route("/activities")
+  .get(getActivites)
+  .get(getActivityCategory)
+  .post(postActivity);
 
 const server = http.createServer(app);
 server.listen(process.env.PORT || 7676, () => {

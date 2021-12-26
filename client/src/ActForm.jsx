@@ -50,7 +50,7 @@ const ActForm = () => {
 
   const handleChange = (category) => {
     const filterString = category[0];
-    fetch(`http://localhost:7676/activities/category?category=${filterString}`)
+    fetch(`http://localhost:7676/activities/category=${filterString}`)
       .then((res) => res.json())
       .then((data) => {
         context.setActivities(data);
