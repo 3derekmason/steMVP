@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const path = require("path");
-const { pool } = require("./db/config");
+const pool = require("./db/config");
 
 const app = express();
 app.use(express.json());
