@@ -61,6 +61,7 @@ const AddActForm = (props) => {
   ];
 
   const handleInputChange = (e) => {
+    e.preventDefault();
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -78,7 +79,7 @@ const AddActForm = (props) => {
     };
     setFormValues(defaultValues);
     props.close();
-    fetch("http://localhost:7676/activities", {
+    fetch("/activities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
