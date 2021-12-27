@@ -112,7 +112,7 @@ const AddActForm = (props) => {
         <div id="formTitle">
           <TextField
             id="title-input"
-            key={Math.random()}
+            key={1}
             name="title"
             label="Activity Title"
             type="text"
@@ -131,17 +131,18 @@ const AddActForm = (props) => {
           <div id="attributes">
             <TextField
               id="groupsize-input"
-              key={Math.random}
+              key={2}
               name="groupSize"
               label="Group Size"
               placeholder="Ex: 3-4"
               type="text"
               value={formValues.groupSize}
               onChange={handleInputChange}
+              autoFocus
             />
             <TextField
               id="duration-input"
-              key={Math.random()}
+              key={3}
               name="duration"
               label="Duration"
               placeholder="Ex: 5-10 minutes"
@@ -149,10 +150,11 @@ const AddActForm = (props) => {
               required
               value={formValues.duration}
               onChange={handleInputChange}
+              autoFocus
             />
             <TextField
               id="title-input"
-              key={Math.random()}
+              key={4}
               name="description"
               label="Description"
               type="text"
@@ -163,6 +165,7 @@ const AddActForm = (props) => {
               maxRows={10}
               fullWidth
               onChange={handleInputChange}
+              autoFocus
             />
           </div>
 
@@ -171,15 +174,16 @@ const AddActForm = (props) => {
               <FormLabel>Category</FormLabel>
               <RadioGroup
                 name="category"
-                key={Math.random()}
+                key={5}
                 required
                 value={formValues.category}
                 onChange={handleInputChange}
+                autoFocus
               >
-                {categoryData.map((chunk) => (
+                {categoryData.map((chunk, i) => (
                   <div style={{ color: chunk[1] }}>
                     <FormControlLabel
-                      key={Math.random()}
+                      key={i}
                       value={chunk[2]}
                       control={<Radio size="small" />}
                       label={chunk[2]}
