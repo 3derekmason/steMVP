@@ -50,7 +50,7 @@ const ActForm = () => {
 
   const handleChange = (category) => {
     const filterString = category[0];
-    fetch("/activities/" + new URLSearchParams({ category: filterString }))
+    fetch(`/activities/category/?category=${filterString}`)
       .then((res) => res.json())
       .then((data) => {
         context.setActivities(data);
@@ -134,7 +134,7 @@ const ActForm = () => {
                 size={"2x"}
               />
             </span>
-            {categoryData.map((category) => (
+            {categoryData.map((category, i) => (
               <span
                 className="chooseCategoryIcon"
                 onClick={(e) => {
@@ -142,11 +142,7 @@ const ActForm = () => {
                   handleChange(category);
                 }}
               >
-                <FontAwesomeIcon
-                  key={Math.random()}
-                  icon={category[1]}
-                  size={"3x"}
-                />
+                <FontAwesomeIcon key={i} icon={category[1]} size={"3x"} />
               </span>
             ))}
           </div>

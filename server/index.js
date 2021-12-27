@@ -10,20 +10,11 @@ app.use(express.static(path.join(__dirname, "../client/public")));
 
 // Get all activities
 const getActivites = (req, res) => {
-  if (req.query.category) {
-    const category = req.query.category;
-    const query = `SELECT * FROM activities WHERE category = '${category}'`;
-    pool.query(query, (err, data) => {
-      if (err) console.log(err);
-      res.status(200).json(data.rows);
-    });
-  } else {
-    const query = "SELECT * FROM activities ORDER BY activity_id DESC";
-    pool.query(query, (err, data) => {
-      if (err) console.log(err);
-      res.status(200).json(data.rows);
-    });
-  }
+  const query = "SELECT * FROM activities ORDER BY activity_id DESC";
+  pool.query(query, (err, data) => {
+    if (err) console.log(err);
+    res.status(200).json(data.rows);
+  });
 };
 // Post activity
 const postActivity = (req, res) => {
@@ -44,16 +35,17 @@ const postActivity = (req, res) => {
   );
 };
 // Get activities of a category
-// const getActivityCategory = (req, res) => {
-//   const category = req.params.category;
-//   const query = `SELECT * FROM activities WHERE category = '${category}'`;
-//   pool.query(query, (err, data) => {
-//     if (err) console.log(err);
-//     res.status(200).json(data.rows);
-//   });
-// };
+const getActivityCategory = (req, res) => {
+  const category = req.query.category;
+  const query = `SELECT * FROM activities WHERE category = '${category}'`;
+  pool.query(query, (err, data) => {
+    if (err) console.log(err);
+    res.status(200).json(data.rows);
+  });
+};
 
 app.route("/activities").get(getActivites).post(postActivity);
+app.route("/activities/category").get(getActivityCategory);
 
 const server = http.createServer(app);
 server.listen(process.env.PORT || 7676, () => {
