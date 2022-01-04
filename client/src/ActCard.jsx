@@ -52,6 +52,7 @@ const ActCard = (props) => {
         background: tile,
         padiding: "16px",
       }}
+      onClick={editActivity(title)}
     >
       <CardActionArea>
         <div className="cardBanner" style={{ background: banner }}>
@@ -95,7 +96,6 @@ const ActCard = (props) => {
             }}
           >
             <div className="mui--text-caption">{duration}</div>
-            <p onClick={editActivity(title)}>X</p>
             <div className="mui--text-caption">{groupsize || ""}</div>
           </div>
         </div>
