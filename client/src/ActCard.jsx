@@ -37,10 +37,12 @@ const ActCard = (props) => {
   const banner = categoryData[props.category][1];
   const tile = categoryData[props.category][2];
 
-  const editActivity = (title) => {
-    fetch(`/activities/title/?title=${title}`, { method: "DELETE" }).then(
-      console.log(`${title} was deleted from the database`)
-    );
+  const editActivity = async (title) => {
+    const toRemove = title;
+
+    fetch(`/activities/title/?title=${toRemove}`, {
+      method: "delete",
+    });
   };
 
   return (
@@ -62,7 +64,6 @@ const ActCard = (props) => {
             style={{ marginRight: "20px", color: tile }}
           >
             {category}
-            <p onClick={editActivity(title)}>X</p>
           </div>
         </div>
         <div className="tileBody">
@@ -95,6 +96,7 @@ const ActCard = (props) => {
             }}
           >
             <div className="mui--text-caption">{duration}</div>
+            <p onClick={editActivity(title)}>X</p>
             <div className="mui--text-caption">{groupsize || ""}</div>
           </div>
         </div>
