@@ -77,7 +77,6 @@ const ActCard = (props) => {
             className="mui--text-body1"
             style={{
               minHeight: "80px",
-              overflow: "scroll",
               marginTop: "4px",
               paddingLeft: "8px",
               paddingRight: "8px",
