@@ -60,9 +60,9 @@ const ActCard = (props) => {
           <div
             className="mui--text-subhead"
             style={{ marginRight: "20px", color: tile }}
-            onClick={editActivity(title)}
           >
             {category}
+            <p onClick={editActivity(title)}>X</p>
           </div>
         </div>
         <div className="tileBody">
