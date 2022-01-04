@@ -37,7 +37,7 @@ const ActCard = (props) => {
   const banner = categoryData[props.category][1];
   const tile = categoryData[props.category][2];
 
-  const editActivity = async (title) => {
+  const editActivity = (title) => {
     const toRemove = title;
 
     fetch(`/activities/title/?title=${toRemove}`, {
