@@ -37,6 +37,12 @@ const ActCard = (props) => {
   const banner = categoryData[props.category][1];
   const tile = categoryData[props.category][2];
 
+  const editActivity = (title) => {
+    fetch(`/activities/title/?title=${title}`, { method: "DELETE" }).then(
+      console.log(`${title} was deleted from the database`)
+    );
+  };
+
   return (
     <Card
       style={{
@@ -54,6 +60,7 @@ const ActCard = (props) => {
           <div
             className="mui--text-subhead"
             style={{ marginRight: "20px", color: tile }}
+            onClick={editActivity(title)}
           >
             {category}
           </div>

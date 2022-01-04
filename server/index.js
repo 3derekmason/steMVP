@@ -44,8 +44,18 @@ const getActivityCategory = (req, res) => {
   });
 };
 
+const deleteActivity = (req, res) => {
+  const activityToRemove = req.query.title;
+  const query = `DELETE FROM activities WHERE title = ${activityToRemove}`;
+  pool.query(query, (err, data) => {
+    if (err) console.log(err);
+    res.status(204).json(data);
+  });
+};
+
 app.route("/activities").get(getActivites).post(postActivity);
 app.route("/activities/category").get(getActivityCategory);
+app.route("/activities/title").delete(deleteActivity);
 
 const server = http.createServer(app);
 server.listen(process.env.PORT || 7676, () => {
