@@ -37,7 +37,9 @@ const ActCard = (props) => {
   const banner = categoryData[props.category][1];
   const tile = categoryData[props.category][2];
 
-  const editActivity = (title) => {
+  const editActivity = (e) => {
+    e.preventDefault();
+
     const toRemove = title;
 
     fetch(`/activities/title/?title=${toRemove}`, {
@@ -96,7 +98,7 @@ const ActCard = (props) => {
             }}
           >
             <div className="mui--text-caption">{duration}</div>
-            <p onClick={editActivity(title)}>X</p>
+            <p onClick={editActivity()}>X</p>
             <div className="mui--text-caption">{groupsize || ""}</div>
           </div>
         </div>
